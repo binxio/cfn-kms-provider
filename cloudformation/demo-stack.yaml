@@ -1,0 +1,66 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Demo Custom AMI Provider
+Parameters:
+  AnotherAccount:
+    Type: String
+    Default: 111111111111
+Resources:
+  KMSGrant:
+    Type: Custom::KMSGrant
+    Properties:
+      KeyId: !GetAtt EncryptionKey.Arn
+      Region: !Ref AWS::Region
+      GranteePrincipal: !Sub 'arn:aws:iam::${AWS::AccountId}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling'
+      Operations:
+        - 'Encrypt'
+        - 'Decrypt'
+        - 'ReEncryptFrom'
+        - 'ReEncryptTo'
+        - 'GenerateDataKey'
+        - 'GenerateDataKeyWithoutPlaintext'
+        - 'DescribeKey'
+        - 'CreateGrant'
+      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:binxio-cfn-kms-provider'
+
+  EncryptionKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: 'demo encryption key'
+      Enabled: true
+      EnableKeyRotation: true
+      KeyPolicy:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: Enable IAM User Permissions
+            Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::${AWS::AccountId}:root'
+            Action: kms:*
+            Resource: '*'
+          - Sid: Allow use of the key
+            Effect: Allow
+            Principal:
+              AWS:
+                - !Sub 'arn:aws:iam::${AnotherAccount}:root'
+            Action:
+              - kms:Encrypt
+              - kms:Decrypt
+              - kms:ReEncrypt*
+              - kms:GenerateDataKey*
+              - kms:DescribeKey
+          - Sid: All grants
+            Effect: Allow
+            Principal:
+              AWS:
+                - !Sub 'arn:aws:iam::${AnotherAccount}:root'
+            Action:
+              - kms:ListGrants
+              - kms:CreateGrant
+              - kms:RevokeGrant
+            Resource: '*'
+Outputs:
+  GrantToken:
+    Value: !GetAtt KMSGrant.GrantToken
+  GrantId:
+    Value: !Ref KMSGrant
