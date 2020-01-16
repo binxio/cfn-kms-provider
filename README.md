@@ -13,7 +13,7 @@ aws cloudformation create-stack \
 aws cloudformation wait stack-create-complete  --stack-name cfn-kms-provider 
 ```
 
-This CloudFormation template will use our pre-packaged provider from `s3://binxio-public-${AWS_REGION}/lambdas/cfn-kms-provider-0.1.4.zip`.
+This CloudFormation template will use our pre-packaged provider from `s3://binxio-public-${AWS_REGION}/lambdas/cfn-kms-provider-latest.zip`.
 
 
 ## Demo
