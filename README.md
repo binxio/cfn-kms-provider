@@ -1,4 +1,4 @@
-# cfn-kms-grant-provider
+# cfn-kms-provider
 A CloudFormation custom resource provider for creating KMS grants.
 
 ## Installation
