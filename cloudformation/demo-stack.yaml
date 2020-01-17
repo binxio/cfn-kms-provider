@@ -4,13 +4,12 @@ Description: Demo Custom AMI Provider
 Parameters:
   AnotherAccount:
     Type: String
-    Default: 111111111111
+    Default: 801119661308
 Resources:
   KMSGrant:
     Type: Custom::KMSGrant
     Properties:
       KeyId: !GetAtt EncryptionKey.Arn
-      Region: !Ref AWS::Region
       GranteePrincipal: !Sub 'arn:aws:iam::${AWS::AccountId}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling'
       Operations:
         - 'Encrypt'
