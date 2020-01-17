@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
+"b0e561f" = {path="./src", editable = true}
 
 [packages]
 boto3 = "*"
