@@ -38,6 +38,7 @@ Resources:
               - 'kms:CreateGrant'
               - 'kms:RetireGrant'
               - 'kms:RevokeGrant'
+              - 'kms:ListAliases'
             Resource: '*'
           - Effect: Allow
             Action:
