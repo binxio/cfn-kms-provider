@@ -63,7 +63,7 @@ test: Pipfile.lock              ## run the local unit tests
 	for i in $$PWD/cloudformation/*; do \
 		aws cloudformation validate-template --template-body file://$$i > /dev/null || exit 1; \
 	done
-	pipenv run pytest
+	PYTHONPATH=$(PWD)/src pipenv run pytest
 
 Pipfile.lock: Pipfile *requirements.txt
 	pipenv install -d -r test-requirements.txt

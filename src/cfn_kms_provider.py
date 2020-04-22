@@ -59,8 +59,7 @@ class KMSGrantProvider(ResourceProvider):
                 if alias:
                     break
 
-            if alias:
-                key_id = alias.get("TargetKeyId")
+            key_id = alias.get("TargetKeyId") if alias else None
 
             if not key_id:
                 self.fail(f"alias '{alias_arn}' does not resolve to a KMS key")
@@ -86,8 +85,9 @@ class KMSGrantProvider(ResourceProvider):
 
     def delete(self):
         if self.physical_resource_id != "could-not-create":
+            args = self.create_api_args()
             self._kms.revoke_grant(
-                KeyId=self.get("KeyId"), GrantId=self.physical_resource_id
+                KeyId=args.get("KeyId"), GrantId=self.physical_resource_id
             )
 
 

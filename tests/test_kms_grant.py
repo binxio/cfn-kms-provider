@@ -48,6 +48,98 @@ create_grant_request_with_alias = {
     "Name": "my grant",
 }
 
+list_aliases_response = {
+    "Aliases": [
+        {
+            "AliasName": "alias/aws/backup",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/backup",
+            "TargetKeyId": "9ac35b02-191d-4b98-af4c-e5a344003ed0",
+        },
+        {
+            "AliasName": "alias/aws/codecommit",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/codecommit",
+            "TargetKeyId": "171fdf16-6858-4580-a54b-405a66975b14",
+        },
+        {
+            "AliasName": "alias/aws/dynamodb",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/dynamodb",
+        },
+        {
+            "AliasName": "alias/aws/ebs",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/ebs",
+            "TargetKeyId": "85fff602-d2eb-42d9-b467-f68d5a19b8ef",
+        },
+        {
+            "AliasName": "alias/aws/elasticfilesystem",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/elasticfilesystem",
+            "TargetKeyId": "200f84e4-d4c5-49a1-b0c4-c5c2876c9c8d",
+        },
+        {
+            "AliasName": "alias/aws/es",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/es",
+        },
+        {
+            "AliasName": "alias/aws/fsx",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/fsx",
+            "TargetKeyId": "5148c34a-9f22-40fc-b7b5-3f6411d85dfa",
+        },
+        {
+            "AliasName": "alias/EBS",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/EBS",
+            "TargetKeyId": "84c80a6b-bab5-4259-88e7-80dee36f5a94",
+        },
+        {
+            "AliasName": "alias/aws/glue",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/glue",
+        },
+        {
+            "AliasName": "alias/aws/kinesisvideo",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/kinesisvideo",
+        },
+        {
+            "AliasName": "alias/aws/lambda",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/lambda",
+            "TargetKeyId": "d8d83b5e-4d36-4705-8bde-079fe4205c06",
+        },
+        {
+            "AliasName": "alias/aws/lightsail",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/lightsail",
+            "TargetKeyId": "a2788a12-d685-4a3d-91b6-a2a135e999fd",
+        },
+        {
+            "AliasName": "alias/aws/rds",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/rds",
+        },
+        {
+            "AliasName": "alias/aws/redshift",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/redshift",
+        },
+        {
+            "AliasName": "alias/aws/s3",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/s3",
+            "TargetKeyId": "e695c083-7da2-4e13-bb60-748c1fc4563a",
+        },
+        {
+            "AliasName": "alias/aws/ssm",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/ssm",
+        },
+        {
+            "AliasName": "alias/aws/xray",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/xray",
+        },
+        {
+            "AliasName": "alias/cmk/backup",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/cmk/backup",
+            "TargetKeyId": "27018d53-9296-4c55-b158-58e4f7656d2c",
+        },
+        {
+            "AliasName": "alias/sm",
+            "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/sm",
+            "TargetKeyId": "64720673-3541-40e9-a08a-175e5f3a02a5",
+        },
+    ]
+}
+
 
 def test_create_grant():
     create_grant_response = {
@@ -76,97 +168,6 @@ def test_create_grant_with_alias():
         "GrantToken": "AQpAYWJkOWJiNDRjZDcyNDliNTY",
     }
 
-    list_aliases_response = {
-        "Aliases": [
-            {
-                "AliasName": "alias/aws/backup",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/backup",
-                "TargetKeyId": "9ac35b02-191d-4b98-af4c-e5a344003ed0",
-            },
-            {
-                "AliasName": "alias/aws/codecommit",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/codecommit",
-                "TargetKeyId": "171fdf16-6858-4580-a54b-405a66975b14",
-            },
-            {
-                "AliasName": "alias/aws/dynamodb",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/dynamodb",
-            },
-            {
-                "AliasName": "alias/aws/ebs",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/ebs",
-                "TargetKeyId": "85fff602-d2eb-42d9-b467-f68d5a19b8ef",
-            },
-            {
-                "AliasName": "alias/aws/elasticfilesystem",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/elasticfilesystem",
-                "TargetKeyId": "200f84e4-d4c5-49a1-b0c4-c5c2876c9c8d",
-            },
-            {
-                "AliasName": "alias/aws/es",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/es",
-            },
-            {
-                "AliasName": "alias/aws/fsx",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/fsx",
-                "TargetKeyId": "5148c34a-9f22-40fc-b7b5-3f6411d85dfa",
-            },
-            {
-                "AliasName": "alias/EBS",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/EBS",
-                "TargetKeyId": "84c80a6b-bab5-4259-88e7-80dee36f5a94",
-            },
-            {
-                "AliasName": "alias/aws/glue",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/glue",
-            },
-            {
-                "AliasName": "alias/aws/kinesisvideo",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/kinesisvideo",
-            },
-            {
-                "AliasName": "alias/aws/lambda",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/lambda",
-                "TargetKeyId": "d8d83b5e-4d36-4705-8bde-079fe4205c06",
-            },
-            {
-                "AliasName": "alias/aws/lightsail",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/lightsail",
-                "TargetKeyId": "a2788a12-d685-4a3d-91b6-a2a135e999fd",
-            },
-            {
-                "AliasName": "alias/aws/rds",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/rds",
-            },
-            {
-                "AliasName": "alias/aws/redshift",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/redshift",
-            },
-            {
-                "AliasName": "alias/aws/s3",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/s3",
-                "TargetKeyId": "e695c083-7da2-4e13-bb60-748c1fc4563a",
-            },
-            {
-                "AliasName": "alias/aws/ssm",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/ssm",
-            },
-            {
-                "AliasName": "alias/aws/xray",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/xray",
-            },
-            {
-                "AliasName": "alias/cmk/backup",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/cmk/backup",
-                "TargetKeyId": "27018d53-9296-4c55-b158-58e4f7656d2c",
-            },
-            {
-                "AliasName": "alias/sm",
-                "AliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/sm",
-                "TargetKeyId": "64720673-3541-40e9-a08a-175e5f3a02a5",
-            },
-        ]
-    }
     kms = botocore.session.get_session().create_client("kms")
     stubber = Stubber(kms)
     stubber.add_response("list_aliases", list_aliases_response, {})
@@ -218,6 +219,32 @@ def test_delete_grant():
     request = Request(
         "Delete",
         revoke_grant_request,
+        physical_resource_id=revoke_grant_request["GrantId"],
+    )
+    response = handler(request, ())
+    assert response["Status"] == "SUCCESS", response["Reason"]
+    stubber.assert_no_pending_responses()
+    stubber.deactivate()
+
+
+def test_delete_grant_by_alias():
+    kms = botocore.session.get_session().create_client("kms")
+    stubber = Stubber(kms)
+    revoke_grant_response = {}
+    revoke_grant_request = {
+        "GrantId": "12312312312",
+        "KeyId": "arn:aws:kms:eu-central-1:123123123123:key/85fff602-d2eb-42d9-b467-f68d5a19b8ef",
+    }
+    stubber.add_response("list_aliases", list_aliases_response, {})
+    stubber.add_response("revoke_grant", revoke_grant_response, revoke_grant_request)
+    stubber.activate()
+    provider._kms = kms
+    request = Request(
+        "Delete",
+        {
+            "GrantId": revoke_grant_request["GrantId"],
+            "KeyAliasArn": "arn:aws:kms:eu-central-1:123123123123:alias/aws/ebs",
+        },
         physical_resource_id=revoke_grant_request["GrantId"],
     )
     response = handler(request, ())
