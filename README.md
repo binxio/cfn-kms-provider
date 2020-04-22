@@ -1,6 +1,8 @@
 # cfn-kms-provider
 A CloudFormation custom resource provider for creating KMS grants.
 
+Read about the usefulness of this provider on [how to start auto scaling group instances using a cross account encrypted AMI](https://binx.io/blog/2020/01/20/how-to-start-autoscaling-groups-using-a-cross-account-encrypted-ami/).
+
 ## How do I create a KMS grant?
 It is quite easy: you specify a CloudFormation resource of the [Custom::KMSGrant](docs/KMSGrant.md), as follows:
 
