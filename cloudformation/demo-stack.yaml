@@ -22,6 +22,12 @@ Resources:
         - 'CreateGrant'
       ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:binxio-cfn-kms-provider'
 
+  KeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: alias/usethisone
+      TargetKeyId: !Ref EncryptionKey
+
   EncryptionKey:
     Type: AWS::KMS::Key
     Properties:
@@ -58,6 +64,23 @@ Resources:
               - kms:CreateGrant
               - kms:RevokeGrant
             Resource: '*'
+
+  KMSGrantOnEBS:
+    Type: Custom::KMSGrant
+    Properties:
+      KeyAliasArn: !Sub 'arn:aws:kms:${AWS::Region}:${AWS::AccountId}:${KeyAlias}'
+      GranteePrincipal: !Sub 'arn:aws:iam::${AWS::AccountId}:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling'
+      Operations:
+        - 'Encrypt'
+        - 'Decrypt'
+        - 'ReEncryptFrom'
+        - 'ReEncryptTo'
+        - 'GenerateDataKey'
+        - 'GenerateDataKeyWithoutPlaintext'
+        - 'DescribeKey'
+        - 'CreateGrant'
+      ServiceToken: !Sub 'arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:binxio-cfn-kms-provider'
+
 Outputs:
   GrantToken:
     Value: !GetAtt KMSGrant.GrantToken
